@@ -1,0 +1,8 @@
+# robots.txt for Vianna Industrial Park
+# https://vianna-industrial-park.vercel.app/
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://vianna-industrial-park.vercel.app/sitemap.xml
