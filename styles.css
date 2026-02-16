@@ -208,18 +208,45 @@ section .lang-en.active {
 }
 
 .logo-group {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    /* gap: var(--spacing-lg); */
     flex: 1;
     min-width: 0;
+    overflow: hidden;
+    position: relative;
+}
+
+.logo-marquee-wrapper {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.logo-marquee {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-lg);
+    animation: scroll-logos 30s linear infinite;
+    width: fit-content;
+}
+
+.logo-item {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+@keyframes scroll-logos {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
 }
 
 .logo-brand {
     display: flex;
-    /* flex-direction: column; */
-    align-items: flex-start;
+    flex-direction: column;
+    align-items: center;
     gap: 0.25rem;
     flex-shrink: 0;
 }
@@ -230,13 +257,12 @@ section .lang-en.active {
     max-width: 190px;
     object-fit: contain;
     display: block;
-    margin-left: -28px;
 }
 
 .logo-project {
     display: flex;
-    /* flex-direction: column; */
-    align-items: flex-start;
+    flex-direction: column;
+    align-items: center;
     gap: 0.25rem;
     flex-shrink: 0;
 }
@@ -261,13 +287,13 @@ section .lang-en.active {
 
 .logo-text-ridh {
     color: var(--color-text-primary);
-    font-size: 1rem;
+    font-size: 0.75rem;
     font-weight: 600;
 }
 
 .logo-text-vianna {
     color: var(--color-text-secondary);
-    font-size: 1rem;
+    font-size: 0.7rem;
     font-weight: 500;
 }
 
@@ -1126,6 +1152,19 @@ section:not(.hero) {
     color: var(--color-charcoal);
 }
 
+.pdf-link {
+    color: var(--color-brand-primary);
+    text-decoration: none;
+    transition: all var(--transition-fast);
+    border-bottom: 1px solid transparent;
+    display: inline-block;
+}
+
+.pdf-link:hover {
+    color: var(--color-brand-primary-mid);
+    border-bottom-color: var(--color-brand-primary-mid);
+}
+
 .status-limited {
     color: var(--color-brand-primary);
 }
@@ -1553,26 +1592,80 @@ section:not(.hero) {
 }
 
 /* ============================================
-   FLOATING WHATSAPP BUTTON
+   FLOATING ACTION BUTTONS
    ============================================ */
 
+/* Base styles for all floating buttons */
+.map-float,
+.phone-float,
 .whatsapp-float {
     position: fixed;
     bottom: 50px;
-    right: 30px;
     width: 60px;
     height: 60px;
-    background: #25D366;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4), 0 2px 4px rgba(0, 0, 0, 0.2);
     z-index: 999;
     transition: all var(--transition-base);
     text-decoration: none;
     color: var(--color-white);
     cursor: pointer;
+}
+
+/* Map Button - Left Side */
+.map-float {
+    left: 30px;
+    background: #4285F4;
+    box-shadow: 0 4px 12px rgba(66, 133, 244, 0.4), 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.map-float:hover {
+    background: #357ae8;
+    transform: translateY(-4px) scale(1.05);
+    box-shadow: 0 8px 20px rgba(66, 133, 244, 0.5), 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.map-float:active {
+    transform: translateY(-2px) scale(1.02);
+}
+
+.map-float svg {
+    width: 32px;
+    height: 32px;
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.2));
+}
+
+/* Phone Button - Center */
+.phone-float {
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--color-brand-primary);
+    box-shadow: 0 4px 12px rgba(0, 84, 120, 0.4), 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.phone-float:hover {
+    background: var(--color-brand-primary-mid);
+    transform: translateX(-50%) translateY(-4px) scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 84, 120, 0.5), 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.phone-float:active {
+    transform: translateX(-50%) translateY(-2px) scale(1.02);
+}
+
+.phone-float svg {
+    width: 32px;
+    height: 32px;
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.2));
+}
+
+/* WhatsApp Button - Right Side */
+.whatsapp-float {
+    right: 30px;
+    background: #25D366;
+    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4), 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .whatsapp-float:hover {
@@ -1591,7 +1684,7 @@ section:not(.hero) {
     filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.2));
 }
 
-/* Pulse animation */
+/* Pulse animation for WhatsApp */
 @keyframes pulse {
     0% {
         box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4), 0 2px 4px rgba(0, 0, 0, 0.2);
@@ -1614,13 +1707,37 @@ section:not(.hero) {
 
 /* Responsive */
 @media (max-width: 768px) {
+    .map-float,
+    .phone-float,
     .whatsapp-float {
         width: 56px;
         height: 56px;
         bottom: 50px;
+    }
+    
+    .map-float {
+        left: 20px;
+    }
+    
+    .phone-float {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    
+    .phone-float:hover {
+        transform: translateX(-50%) translateY(-4px) scale(1.05);
+    }
+    
+    .phone-float:active {
+        transform: translateX(-50%) translateY(-2px) scale(1.02);
+    }
+    
+    .whatsapp-float {
         right: 20px;
     }
     
+    .map-float svg,
+    .phone-float svg,
     .whatsapp-float svg {
         width: 28px;
         height: 28px;
@@ -1663,8 +1780,12 @@ section:not(.hero) {
     }
     
     .logo-group {
-        flex-wrap: wrap;
-        gap: var(--spacing-sm);
+        overflow: hidden;
+    }
+    
+    .logo-marquee {
+        gap: var(--spacing-md);
+        animation-duration: 25s;
     }
     
     .logo-brand-image {
@@ -1690,7 +1811,7 @@ section:not(.hero) {
     }
     
     .logo-divider {
-        display: none;
+        height: 28px;
     }
     
     .hero-logo-group {
