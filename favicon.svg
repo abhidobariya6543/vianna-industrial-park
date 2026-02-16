@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="8429 14788 3539 3312" width="32" height="32">
+ <defs>
+  <linearGradient id="faviconGrad" gradientUnits="userSpaceOnUse" x1="8429.02" y1="18141.07" x2="11968.37" y2="15374.64">
+   <stop offset="0" style="stop-opacity:1; stop-color:#005478"/>
+   <stop offset="0.490196" style="stop-opacity:1; stop-color:#0A587A"/>
+   <stop offset="1" style="stop-opacity:1; stop-color:#258EB2"/>
+  </linearGradient>
+ </defs>
+ <path fill="url(#faviconGrad)" d="M9888.96 14788.98l-1308.06 0 1185.64 2053.59 726.39 1258.14 122.31 -211.83 -726.4 -1258.15 -52.28 -90.57 88.98 -104.6 37.99 65.81 726.38 1258.15 92.69 -160.54 -726.38 -1258.14 -368.74 -638.68 89.61 -103.49 353.8 612.81 726.39 1258.14 92.7 -160.53 -726.39 -1258.14 -74.5 -129.02 87.04 -107.97 62.14 107.63 726.39 1258.14 122.3 -211.83 -726.39 -1258.14 -531.61 -920.78zm2339.55 0l-1308.06 0 15.87 27.49 726.38 1258.14 654.04 -1132.82 88.22 -152.81 -176.45 0z"/>
+</svg>
